@@ -71,9 +71,8 @@
     <header class="sticky-header fixed top-0 left-0 w-full z-40 py-4 px-6 transition-all duration-300">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center">
-                <img src="logo.png" height="100" width="200" />
+                <img src="logo.png" height="100" width="200" /> 
             </div>
-            
             <nav class="hidden md:flex space-x-8">
                 <a href="#home" class="text-white hover:text-[#D4AF37] transition-colors duration-300">Accueil</a>
                 <a href="#vehicles" class="text-white hover:text-[#D4AF37] transition-colors duration-300">Véhicules</a>
@@ -131,19 +130,28 @@
         </div>
     </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-section flex items-center justify-center text-center relative">
-        <div class="container mx-auto px-6 z-10">
-            <h1 class="title-font text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
+    <section id="home" class="hero-section relative h-screen flex items-center justify-center text-center overflow-hidden">
+        <!-- Vidéo en arrière-plan -->
+        <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover z-0">
+            <source src="hero-video.webm" type="video/webm">
+            Votre navigateur ne supporte pas la lecture de vidéos.
+        </video>
+    
+        <!-- Contenu par-dessus la vidéo -->
+        <div class="container mx-auto px-6 z-10 relative">
+            <h1 class="title-font text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-white">
                 <span class="text-white">Luxe.</span> <span class="gold-text">Puissance.</span> <span class="text-white">À portée de clés.</span>
             </h1>
-            <p class="text-xl md:text-2xl light-text mb-10 max-w-3xl mx-auto">
+            <p class="text-xl md:text-2xl light-text mb-10 max-w-3xl mx-auto text-white">
                 Spécialiste de l’import de véhicules haut de gamme
             </p>
             <a href="#contact" class="gold-bg hover:bg-opacity-90 text-black font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 inline-block">
                 Importer mon véhicule
             </a>
         </div>
+    
+        <!-- Overlay foncé (optionnel pour meilleure lisibilité du texte) -->
+        <div class="absolute inset-0 bg-black bg-opacity-50 z-0"></div>
     </section>
 
     <!-- About Section -->
