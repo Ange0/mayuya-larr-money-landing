@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAYUYA LARR Money - Importateur de véhicules de luxe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Montserrat:wght@800&family=Inter:wght@400;500&family=Poppins&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            color: #FFFFFF;
+            scroll-behavior: smooth;
+        }
+        .title-font {
+            font-family: 'Oswald', 'Montserrat', sans-serif;
+        }
+        .gold-text {
+            color: #D4AF37;
+        }
+        .light-text {
+            color: #B0B0B0;
+        }
+        .gold-hover:hover {
+            color: #D4AF37;
+            transition: color 0.3s ease;
+        }
+        .gold-border {
+            border-color: #D4AF37;
+        }
+        .gold-bg {
+            background-color: #D4AF37;
+        }
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+        }
+        .marquee {
+            animation: scroll 30s linear infinite;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .car-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(212, 175, 55, 0.1), 0 10px 10px -5px rgba(212, 175, 55, 0.04);
+            transition: all 0.3s ease;
+        }
+        .input-field:focus {
+            border-color: #D4AF37;
+            box-shadow: 0 0 0 1px #D4AF37;
+        }
+        .sticky-header {
+            backdrop-filter: blur(10px);
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/yournumber" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-lg hover:bg-green-600 transition-all z-50">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Header -->
+    <header class="sticky-header fixed top-0 left-0 w-full z-40 py-4 px-6 transition-all duration-300">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="logo.png" height="100" width="200" />
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="text-white hover:text-[#D4AF37] transition-colors duration-300">Accueil</a>
+                <a href="#vehicles" class="text-white hover:text-[#D4AF37] transition-colors duration-300">Véhicules</a>
+                <a href="#about" class="text-white hover:text-[#D4AF37] transition-colors duration-300">À propos</a>
+                <a href="#contact" class="text-white hover:text-[#D4AF37] transition-colors duration-300">Contact</a>
+            </nav>
+            
+            <button class="md:hidden text-white focus:outline-none" id="menu-toggle">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black py-4 px-6 absolute left-0 right-0 top-full">
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="text-white hover:text-[#D4AF37] transition-colors duration-300">Accueil</a>
+                <a href="#vehicles" class="text-white hover:text-[#D4AF37] transition-colors duration-300">Véhicules</a>
+                <a href="#about" class="text-white hover:text-[#D4AF37] transition-colors duration-300">À propos</a>
+                <a href="#contact" class="text-white hover:text-[#D4AF37] transition-colors duration-300">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Brands Marquee -->
+    <div class="bg-black py-3 border-t border-b border-gray-800 overflow-hidden mt-16">
+        <div class="marquee whitespace-nowrap flex items-center">
+            <div class="inline-block px-10">
+                <span class="text-xl md:text-2xl font-bold mx-8 text-gray-300">Koenigsegg</span>
+                <span class="text-xl md:text-2xl font-bold mx-8 text-gray-300">Ferrari</span>
+                <span class="text-xl md:text-2xl font-bold mx-8 text-gray-300">Lamborghini</span>
+                <span class="text-xl md:text-2xl font-bold mx-8 text-gray-300">Mercedes</span>
+                <span class="text-xl md:text-2xl font-bold mx-8 text-gray-300">Rolls-Royce</span>
+                <span class="text-xl md:text-2xl font-bold mx-8 text-gray-300">McLaren</span>
+                <span class="text-xl md:text-2xl font-bold mx-8 text-gray-300">Brabus</span>
+                <span class="text-xl md:text-2xl font-bold mx-8 text-gray-300">Porsche</span>
+                <span class="text-xl md:text-2xl font-bold mx-8 text-gray-300">Aston Martin</span>
+                <span class="text-xl md:text-2xl font-bold mx-8 text-gray-300">Bentley</span>
+                <span class="text-xl md:text-2xl font-bold mx-8 text-gray-300">Maybach</span>
+                <span class="text-xl md:text-2xl font-bold mx-8 text-gray-300">BMW</span>
+            </div>
+            <div class="inline-block px-10">
+                <span class="text-xl md:text-2xl font-bold mx-8 text-gray-300">Koenigsegg</span>
+                <span class="text-xl md:text-2xl font-bold mx-8 text-gray-300">Ferrari</span>
+                <span class="text-xl md:text-2xl font-bold mx-8 text-gray-300">Lamborghini</span>
+                <span class="text-xl md:text-2xl font-bold mx-8 text-gray-300">Mercedes</span>
+                <span class="text-xl md:text-2xl font-bold mx-8 text-gray-300">Rolls-Royce</span>
+                <span class="text-xl md:text-2xl font-bold mx-8 text-gray-300">McLaren</span>
+                <span class="text-xl md:text-2xl font-bold mx-8 text-gray-300">Brabus</span>
+                <span class="text-xl md:text-2xl font-bold mx-8 text-gray-300">Porsche</span>
+                <span class="text-xl md:text-2xl font-bold mx-8 text-gray-300">Aston Martin</span>
+                <span class="text-xl md:text-2xl font-bold mx-8 text-gray-300">Bentley</span>
+                <span class="text-xl md:text-2xl font-bold mx-8 text-gray-300">Maybach</span>
+                <span class="text-xl md:text-2xl font-bold mx-8 text-gray-300">BMW</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section flex items-center justify-center text-center relative">
+        <div class="container mx-auto px-6 z-10">
+            <h1 class="title-font text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
+                <span class="text-white">Luxe.</span> <span class="gold-text">Puissance.</span> <span class="text-white">À portée de clés.</span>
+            </h1>
+            <p class="text-xl md:text-2xl light-text mb-10 max-w-3xl mx-auto">
+                Importez votre véhicule de luxe depuis l'Allemagne, les États-Unis ou Dubaï avec l'expertise et la discrétion qui caractérisent MAYUYA LARR Money.
+            </p>
+            <a href="#contact" class="gold-bg hover:bg-opacity-90 text-black font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 inline-block">
+                Importer mon véhicule
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="title-font text-3xl md:text-4xl font-bold mb-4 gold-text">À PROPOS DE NOUS</h2>
+                <div class="w-24 h-1 gold-bg mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="title-font text-2xl md:text-3xl font-bold mb-6">Notre Mission</h3>
+                    <p class="light-text text-lg mb-8">
+                        Offrir à l'Afrique le meilleur du luxe automobile mondial avec rigueur, fiabilité et transparence. 
+                        Nous sélectionnons chaque véhicule avec le plus grand soin pour répondre aux exigences 
+                        les plus élevées de nos clients.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="gold-text text-2xl mr-4">•</div>
+                            <div>
+                                <h4 class="title-font text-xl font-bold mb-2">Excellence</h4>
+                                <p class="light-text">Des véhicules d'exception, rigoureusement inspectés avant livraison.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="gold-text text-2xl mr-4">•</div>
+                            <div>
+                                <h4 class="title-font text-xl font-bold mb-2">Discrétion</h4>
+                                <p class="light-text">Un service haut de gamme qui respecte votre confidentialité.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="gold-text text-2xl mr-4">•</div>
+                            <div>
+                                <h4 class="title-font text-xl font-bold mb-2">Sécurité</h4>
+                                <p class="light-text">Processus d'importation sécurisé et accompagnement personnalisé.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="relative pb-[56.25%] overflow-hidden rounded-lg">
+                        <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                             alt="Luxury Car" 
+                             class="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition-transform duration-500">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vehicles Section -->
+    <section id="vehicles" class="py-20 px-6 bg-gray-900">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="title-font text-3xl md:text-4xl font-bold mb-4 gold-text">NOTRE SÉLECTION</h2>
+                <div class="w-24 h-1 gold-bg mx-auto"></div>
+            </div>
+            
+            <!-- Filters -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button class="filter-btn px-4 py-2 rounded-full border border-gray-700 text-white hover:bg-gray-800 hover:border-[#D4AF37] transition-all" data-filter="all">Tous</button>
+                <button class="filter-btn px-4 py-2 rounded-full border border-gray-700 text-white hover:bg-gray-800 hover:border-[#D4AF37] transition-all" data-filter="suv">SUV</button>
+                <button class="filter-btn px-4 py-2 rounded-full border border-gray-700 text-white hover:bg-gray-800 hover:border-[#D4AF37] transition-all" data-filter="sport">Sport</button>
+                <button class="filter-btn px-4 py-2 rounded-full border border-gray-700 text-white hover:bg-gray-800 hover:border-[#D4AF37] transition-all" data-filter="berline">Berline</button>
+                <button class="filter-btn px-4 py-2 rounded-full border border-gray-700 text-white hover:bg-gray-800 hover:border-[#D4AF37] transition-all" data-filter="coupe">Coupé</button>
+            </div>
+            
+            <!-- Vehicles Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Vehicle 1 -->
+                <div class="car-card bg-gray-800 rounded-lg overflow-hidden transition-all duration-300" data-category="suv">
+                    <div class="relative pb-[75%] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2025&q=80" 
+                             alt="Lamborghini Urus" 
+                             class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="title-font text-xl font-bold">Lamborghini Urus</h3>
+                            <span class="gold-text font-bold">2023</span>
+                        </div>
+                        <div class="light-text mb-4 flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 gold-text"></i>
+                            <span>Allemagne</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold">À partir de</span>
+                            <span class="gold-text text-xl font-bold">285 000 €</span>
+                        </div>
+                        <button class="w-full mt-4 py-2 border border-[#D4AF37] text-[#D4AF37] rounded hover:bg-[#D4AF37] hover:text-black transition-all">
+                            En savoir plus
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Vehicle 2 -->
+                <div class="car-card bg-gray-800 rounded-lg overflow-hidden transition-all duration-300" data-category="sport">
+                    <div class="relative pb-[75%] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                             alt="Ferrari 488 GTB" 
+                             class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="title-font text-xl font-bold">Ferrari 488 GTB</h3>
+                            <span class="gold-text font-bold">2022</span>
+                        </div>
+                        <div class="light-text mb-4 flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 gold-text"></i>
+                            <span>Dubaï</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold">À partir de</span>
+                            <span class="gold-text text-xl font-bold">320 000 €</span>
+                        </div>
+                        <button class="w-full mt-4 py-2 border border-[#D4AF37] text-[#D4AF37] rounded hover:bg-[#D4AF37] hover:text-black transition-all">
+                            En savoir plus
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Vehicle 3 -->
+                <div class="car-card bg-gray-800 rounded-lg overflow-hidden transition-all duration-300" data-category="berline">
+                    <div class="relative pb-[75%] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1555353540-64580b51c258?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2089&q=80" 
+                             alt="Mercedes-Maybach S650" 
+                             class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="title-font text-xl font-bold">Mercedes-Maybach S650</h3>
+                            <span class="gold-text font-bold">2023</span>
+                        </div>
+                        <div class="light-text mb-4 flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 gold-text"></i>
+                            <span>États-Unis</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold">À partir de</span>
+                            <span class="gold-text text-xl font-bold">210 000 €</span>
+                        </div>
+                        <button class="w-full mt-4 py-2 border border-[#D4AF37] text-[#D4AF37] rounded hover:bg-[#D4AF37] hover:text-black transition-all">
+                            En savoir plus
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Vehicle 4 -->
+                <div class="car-card bg-gray-800 rounded-lg overflow-hidden transition-all duration-300" data-category="coupe">
+                    <div class="relative pb-[75%] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1555353540-64580b51c258?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2089&q=80" 
+                             alt="Mercedes-Maybach S650" 
+                             class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="title-font text-xl font-bold">Porsche 911 Turbo S</h3>
+                            <span class="gold-text font-bold">2023</span>
+                        </div>
+                        <div class="light-text mb-4 flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 gold-text"></i>
+                            <span>Allemagne</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold">À partir de</span>
+                            <span class="gold-text text-xl font-bold">235 000 €</span>
+                        </div>
+                        <button class="w-full mt-4 py-2 border border-[#D4AF37] text-[#D4AF37] rounded hover:bg-[#D4AF37] hover:text-black transition-all">
+                            En savoir plus
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Vehicle 5 -->
+                <div class="car-card bg-gray-800 rounded-lg overflow-hidden transition-all duration-300" data-category="suv">
+                    <div class="relative pb-[75%] overflow-hidden">
+                        <img src="https://images.pexels.com/photos/14843798/pexels-photo-14843798.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                             alt="Bentley Bentayga" 
+                             class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="title-font text-xl font-bold">Bentley Bentayga</h3>
+                            <span class="gold-text font-bold">2022</span>
+                        </div>
+                        <div class="light-text mb-4 flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 gold-text"></i>
+                            <span>Dubaï</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold">À partir de</span>
+                            <span class="gold-text text-xl font-bold">275 000 €</span>
+                        </div>
+                        <button class="w-full mt-4 py-2 border border-[#D4AF37] text-[#D4AF37] rounded hover:bg-[#D4AF37] hover:text-black transition-all">
+                            En savoir plus
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Vehicle 6 -->
+                <div class="car-card bg-gray-800 rounded-lg overflow-hidden transition-all duration-300" data-category="berline">
+                    <div class="relative pb-[75%] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                             alt="Rolls-Royce Phantom" 
+                             class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="title-font text-xl font-bold">Rolls-Royce Phantom</h3>
+                            <span class="gold-text font-bold">2023</span>
+                        </div>
+                        <div class="light-text mb-4 flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 gold-text"></i>
+                            <span>États-Unis</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold">À partir de</span>
+                            <span class="gold-text text-xl font-bold">450 000 €</span>
+                        </div>
+                        <button class="w-full mt-4 py-2 border border-[#D4AF37] text-[#D4AF37] rounded hover:bg-[#D4AF37] hover:text-black transition-all">
+                            En savoir plus
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="gold-bg hover:bg-opacity-90 text-black font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 inline-block">
+                    Voir tous nos véhicules
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6">
+        <div class="container mx-auto max-w-4xl">
+            <div class="text-center mb-16">
+                <h2 class="title-font text-3xl md:text-4xl font-bold mb-4 gold-text">NOUS CONTACTER</h2>
+                <div class="w-24 h-1 gold-bg mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="title-font text-2xl font-bold mb-6">Parlez-nous de votre projet</h3>
+                    <p class="light-text mb-8">
+                        Que vous recherchiez un véhicule spécifique ou que vous souhaitiez simplement en savoir plus sur nos services, 
+                        notre équipe se fera un plaisir de vous accompagner.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center">
+                            <div class="gold-text text-2xl mr-4">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="title-font text-lg font-bold">Téléphone</h4>
+                                <p class="light-text">+XX XXX XXX XXX</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="gold-text text-2xl mr-4">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="title-font text-lg font-bold">Email</h4>
+                                <p class="light-text">contact@mayuyalarrmoney.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="gold-text text-2xl mr-4">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h4 class="title-font text-lg font-bold">WhatsApp</h4>
+                                <p class="light-text">+XX XXX XXX XXX</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-white mb-1">Nom complet</label>
+                            <input type="text" id="name" class="input-field w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded focus:outline-none focus:border-[#D4AF37] transition-all" placeholder="Votre nom">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-white mb-1">Numéro WhatsApp</label>
+                            <input type="tel" id="phone" class="input-field w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded focus:outline-none focus:border-[#D4AF37] transition-all" placeholder="Votre numéro">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-white mb-1">Email</label>
+                            <input type="email" id="email" class="input-field w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded focus:outline-none focus:border-[#D4AF37] transition-all" placeholder="Votre email">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-white mb-1">Message</label>
+                            <textarea id="message" rows="4" class="input-field w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded focus:outline-none focus:border-[#D4AF37] transition-all" placeholder="Décrivez le véhicule que vous recherchez"></textarea>
+                        </div>
+                        <button type="submit" class="gold-bg hover:bg-opacity-90 text-black font-bold py-3 px-6 rounded w-full text-lg transition-all duration-300">
+                            Être rappelé
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 px-6 border-t border-gray-800">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <h3 class="title-font text-2xl font-bold mb-4 gold-text">MAYUYA LARR Money</h3>
+                    <p class="light-text mb-6">
+                        Importateur de véhicules de luxe depuis l'Allemagne, les États-Unis et Dubaï vers toute l'Afrique.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-[#D4AF37] text-xl transition-colors duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-[#D4AF37] text-xl transition-colors duration-300">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-[#D4AF37] text-xl transition-colors duration-300">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="title-font text-lg font-bold mb-4 text-white">Liens rapides</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="light-text hover:text-[#D4AF37] transition-colors duration-300">Accueil</a></li>
+                        <li><a href="#vehicles" class="light-text hover:text-[#D4AF37] transition-colors duration-300">Véhicules</a></li>
+                        <li><a href="#about" class="light-text hover:text-[#D4AF37] transition-colors duration-300">À propos</a></li>
+                        <li><a href="#contact" class="light-text hover:text-[#D4AF37] transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="title-font text-lg font-bold mb-4 text-white">Informations</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="light-text hover:text-[#D4AF37] transition-colors duration-300">Mentions légales</a></li>
+                        <li><a href="#" class="light-text hover:text-[#D4AF37] transition-colors duration-300">Politique de confidentialité</a></li>
+                        <li><a href="#" class="light-text hover:text-[#D4AF37] transition-colors duration-300">Conditions générales</a></li>
+                        <li class="light-text">Livraison dans toute l'Afrique</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center light-text">
+                <p>© 2023 MAYUYA LARR Money. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Filter vehicles
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const carCards = document.querySelectorAll('.car-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('bg-gray-800', 'border-[#D4AF37]'));
+                
+                // Add active class to clicked button
+                button.classList.add('bg-gray-800', 'border-[#D4AF37]');
+                
+                const filter = button.dataset.filter;
+                
+                carCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Sticky header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('sticky-header');
+            } else {
+                header.classList.remove('sticky-header');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
